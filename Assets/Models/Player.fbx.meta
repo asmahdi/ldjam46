@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 840761b893135ff4ca4de27f6bce013d
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 20071aaf20802314298f276a4e71e75a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 7604b3052e09008429887715e828aeb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: 719e40cf662c5de49a8d45b9e57088ae, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 3
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: CharacterRun(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root
+      parentName: CharacterRun(Clone)
+      position: {x: 0.0000032774021, y: 0.0063943244, z: 0}
+      rotation: {x: 0, y: 0, z: 0.39772242, w: 0.9175058}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HipL
+      parentName: Root
+      position: {x: -0.0021384123, y: 0, z: 0}
+      rotation: {x: -0.04548287, y: 0.11224506, z: 0.35890943, w: 0.9254818}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeL
+      parentName: HipL
+      position: {x: -0.0014816461, y: 0, z: 0}
+      rotation: {x: 0.0000000037252899, y: -0.03161278, z: -0.0031247144, w: 0.9994954}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg
+      parentName: KneeL
+      position: {x: -0.0030423133, y: -4.4408923e-19, z: 4.235165e-25}
+      rotation: {x: 0.00007506417, y: 0.07279634, z: 0.009569433, w: 0.9973009}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HipR
+      parentName: Root
+      position: {x: -0.00016753968, y: -0.002132937, z: 0}
+      rotation: {x: 0.044590827, y: -0.11282987, z: 0.3648274, w: 0.92313707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeR
+      parentName: HipR
+      position: {x: -0.0014618909, y: 0, z: 0}
+      rotation: {x: -9.340705e-17, y: -0.049107928, z: -1.061167e-14, w: 0.9987935}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg 1
+      parentName: KneeR
+      position: {x: -0.0030423133, y: 1.776357e-18, z: 0}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.1
+    rootMotionBoneName: Root
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
