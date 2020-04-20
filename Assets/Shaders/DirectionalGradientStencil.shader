@@ -11,8 +11,8 @@
 	}
 	SubShader {
 		Tags { 
-      "RenderType"="Opaque" 
-      }
+		  "RenderType"="Opaque" 
+		  }
 		Stencil {
 			Ref 1
 			Comp equal

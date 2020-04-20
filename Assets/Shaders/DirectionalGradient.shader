@@ -8,13 +8,15 @@
       _EmissiveStrengh ("Emissive Strengh ", Float) = 1
       _ColorX ("Color X", COLOR) = (1,1,1,1)
       _ColorY ("Color Y", COLOR) = (1,1,1,1)
+	  
 	}
 	SubShader {
-		Tags { 
-      "Queue" = "Geometry"
-      "RenderType"="Opaque" 
-      }
-       
+		Tags {
+		  "RenderType" = "Opaque"
+		  }
+
+		
+		
 		
 	  CGPROGRAM
       
@@ -61,10 +63,10 @@
          o.Emission = lerp(half3(0,0,0), finalColor, _EmissiveStrengh);
          
          // the "color" before lighting is applied
-         o.Albedo = finalColor * saturate(1 - _EmissiveStrengh);
+         o.Albedo = finalColor * saturate(1 - _EmissiveStrengh) ;
          
          // opaque
-			o.Alpha = 1;
+		 o.Alpha = 1;
 		}
 		ENDCG
 	} 
