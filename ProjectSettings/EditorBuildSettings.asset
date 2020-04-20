@@ -6,9 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Music.unity
-    guid: 36f733ff8dfcacb41bb8b34483758254
+    path: Assets/Scenes/Start.unity
+    guid: 418275d76464e2541a738d2c68f4474f
+  - enabled: 1
+    path: Assets/Scenes/Art.unity
+    guid: 537cd90dae8ef4a46be9859343f01dfd
   - enabled: 1
     path: Assets/Scenes/GameA.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Music.unity
+    guid: 36f733ff8dfcacb41bb8b34483758254
+  - enabled: 1
+    path: Assets/Scenes/GameB.unity
+    guid: 2d837a73ceb0a1a47ae38a0baab240c1
+  - enabled: 1
+    path: Assets/Scenes/Friend.unity
+    guid: 211f745e78c378449893897b404df07d
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: b3e3d5cca90f1a9419585f6eeaefb8f8
   m_configObjects: {}
