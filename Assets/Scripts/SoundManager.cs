@@ -12,5 +12,13 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Initiate.Fade("Start", Color.black, 1);
+        }
+    }
+
+
 }
