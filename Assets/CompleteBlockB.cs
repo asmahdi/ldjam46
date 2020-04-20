@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class CompleteBlockB : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject stair, lastStair, player;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "MoverB")
         {
             DataManager.COMPLETE_BLOCK_B = true;
             print("Hit Player");
-           // Invoke("RotatePlayer", 1);
+             Invoke("ResetStair", 5);
         }
     }
 
 
-    private void RotatePlayer()
+    private void ResetStair()
     {
-        player.transform.Rotate(0, 180, 0);
+        player.transform.SetParent(lastStair.transform);
+        stair.GetComponent<Animator>().SetBool("stair_up", false);
     }
 }

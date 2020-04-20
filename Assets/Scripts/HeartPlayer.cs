@@ -5,6 +5,9 @@ public class HeartPlayer : MonoBehaviour
 {
 
     public Animator playerAnimator;
+    public GameObject mover;
+
+    private bool enableInput = false;
 
     private void Update()
     {
@@ -18,9 +21,18 @@ public class HeartPlayer : MonoBehaviour
             {
                 Debug.Log("You selected the " + hit.transform.name);
 
-               if(hit.transform.tag == "Heart")
+               if(hit.transform.tag == "Heart" && enableInput)
                 {
+                    if (mover != null)
+                    {
+                        mover.GetComponent<Animator>().SetTrigger("put_block_b");
+                    }
+                }
 
+                if (hit.transform.tag == "MoverC" )
+                {
+                    hit.transform.SetParent(transform);
+                    transform.position = new Vector3(0, .5f, 0);
                 }
 
             }
@@ -60,6 +72,7 @@ public class HeartPlayer : MonoBehaviour
         {
             transform.SetParent(null);
             transform.SetParent(other.transform);
+            enableInput = true; 
         }
 
 
