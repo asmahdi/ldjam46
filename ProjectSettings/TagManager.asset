@@ -11,6 +11,12 @@ TagManager:
   - GateBlock
   - GateEntranceA
   - Heart
+  - xAxis
+  - zAxis
+  - GreenTile
+  - RedTile
+  - Reward
+  - BridgeCubeTriggered
   layers:
   - Default
   - TransparentFX

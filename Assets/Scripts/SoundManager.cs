@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -17,6 +17,15 @@ public class SoundManager : MonoBehaviour
         if(Input.GetKey(KeyCode.Escape))
         {
             Initiate.Fade("Start", Color.black, 1);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Art")
+        {
+            GetComponent<AudioSource>().volume = 0.2f;
+        }
+        else
+        {
+            GetComponent<AudioSource>().volume = 1;
         }
     }
 
