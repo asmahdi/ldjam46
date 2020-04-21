@@ -13,6 +13,7 @@ public class Reload : MonoBehaviour
     void ReloadGame()
     {
         Initiate.Fade("Start", Color.black, 2);
+        DataManager.RESTART = true;
     }
     
 }

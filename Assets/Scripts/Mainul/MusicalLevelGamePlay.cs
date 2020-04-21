@@ -12,8 +12,9 @@ public class MusicalLevelGamePlay : MonoBehaviour
     public GameObject victoryCube;
     public GameObject rewardCube;
     public GameObject playerRewardCube;
+    public GameObject endLevel;
     public float cubeSpeed;
-
+    public GameObject lastCube;
 
 
     [Header("Audio Clips")]
@@ -50,6 +51,11 @@ public class MusicalLevelGamePlay : MonoBehaviour
             Invoke("EnableMovingToDestination", 2.0f);
         }
 
+        if (other.gameObject == endLevel)
+        {
+            Initiate.Fade("GameB", Color.black, 1);
+        }
+
         if(other.gameObject == masterTile)
         {
             if (!isColoringActive)
@@ -73,7 +79,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
             {
                 Renderer rend = other.gameObject.GetComponent<Renderer>();
                 rend.enabled = true;
-                if(rend.sharedMaterial != greenMaterial)
+                if(rend.sharedMaterial != greenMaterial || other.gameObject == lastCube)
                 {
                     rend.sharedMaterial = greenMaterial;
                     coloredTileIndex++;
@@ -187,6 +193,9 @@ public class MusicalLevelGamePlay : MonoBehaviour
         Renderer rend = masterTile.GetComponent<Renderer>();
         rend.enabled = true;
         rend.sharedMaterial = greenMaterial;
+        Renderer rend1 = lastCube.GetComponent<Renderer>();
+        rend1.enabled = true;
+        rend1.sharedMaterial = greenMaterial;
     }
 
 }

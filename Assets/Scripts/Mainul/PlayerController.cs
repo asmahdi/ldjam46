@@ -35,11 +35,13 @@ public class PlayerController : MonoBehaviour
     int pathCount;
     Vector3 destination;
     float tempTimer;
+    bool victoryCall;
 
     private int maxDepth = 20;
 
     private void Start()
     {
+        victoryCall = false;
         destination = transform.position;
         gridBehaviour.startX = (int) transform.position.x;
         gridBehaviour.startY = (int) transform.position.z;
@@ -256,7 +258,12 @@ public class PlayerController : MonoBehaviour
             {
                 gameObject.GetComponent<Animator>().enabled = true;
 
-                Invoke("FriendLevelVictory", 2.0f);
+                if (!victoryCall)
+                {
+                    victoryCall = true;
+                    Invoke("FriendLevelVictory", 2.0f);
+                }
+                
                
             }
 
@@ -269,6 +276,12 @@ public class PlayerController : MonoBehaviour
     {
         victoryTile.GetComponent<Animator>().SetBool("isLevelWon", true);
         victoryCube.GetComponent<Animator>().SetBool("isLevelWon", true);
+        Invoke("FriendLevelEnd", 4.0f);
+    }
+
+    void FriendLevelEnd()
+    {
+        Initiate.Fade("Ending", Color.black, 1f);
     }
 
 

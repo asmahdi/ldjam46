@@ -10,12 +10,14 @@ public class ColorMatchGamePlay : MonoBehaviour
     public GameObject reward;
     public GameObject bridgeCube;
     public GameObject playerReward;
+    public GameObject endLevel;
     public float cubeSpeed;
 
     [Header("Materials")]
     public Material emmisiveMaterial;
     public Material redMaterial;
     public Material defaultMaterial;
+    public Color emissiveActivated, emissiveDecativated;
 
 
     [Header("Audio Clips")]
@@ -51,9 +53,14 @@ public class ColorMatchGamePlay : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.gameObject.tag);
+        Debug.Log(other.gameObject.tag);
 
-        if(other.gameObject.tag == "Untagged")
+        if(other.gameObject == endLevel)
+        {
+            Initiate.Fade("GameA", Color.black, 1);
+        }
+
+        if (other.gameObject.tag == "Untagged")
         {
             if (activaMaterial == redMaterial && !isGameWon)
             {
@@ -101,7 +108,7 @@ public class ColorMatchGamePlay : MonoBehaviour
                 activaMaterial = redMaterial;
             }
 
-            emmisiveMaterial.SetColor("_Color", Color.cyan);
+            emmisiveMaterial.SetColor("_ColorHigh", emissiveActivated);
             Invoke("BackToDefaultEmmisive", 1.0f);
 
 
@@ -161,7 +168,7 @@ public class ColorMatchGamePlay : MonoBehaviour
 
     void BackToDefaultEmmisive()
     {
-        emmisiveMaterial.SetColor("_Color", Color.white);
+        emmisiveMaterial.SetColor("_ColorHigh", emissiveDecativated);
     }
 
 }
