@@ -287,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183463017}
   - component: {fileID: 183463016}
+  - component: {fileID: 183463015}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -294,6 +295,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &183463015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183463014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1736b458adbe24e09919618df303a98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusic: 1
+  footstep: 0.1
+  tileMoving: 0.3
+  fx: 0.3
+  ocean: 0.403
+  heartVolume: 0.788
 --- !u!114 &183463016
 MonoBehaviour:
   m_ObjectHideFlags: 0

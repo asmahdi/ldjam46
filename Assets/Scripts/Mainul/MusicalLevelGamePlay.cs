@@ -79,6 +79,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
                 GuideToResetTile();
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
                 audio.Stop();
+                audio.volume = DataManager.FX;
                 audio.clip = audioClips[coloredTileIndex];
                 audio.Play();
             }
@@ -113,6 +114,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
                     if (coloredTileIndex < 17)
                     {
                         audio.Stop();
+                        audio.volume = DataManager.FX;
                         audio.clip = audioClips[coloredTileIndex];
                         audio.Play();
                     }

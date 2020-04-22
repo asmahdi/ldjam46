@@ -238,6 +238,11 @@ public class PlayerController : MonoBehaviour
             {
                 StopCharacterAnimationWithSound();
             }
+
+            if(transform.position == new Vector3(-3, 1, 5))
+            {
+                currentMission = CurrentMission.CompleteA2;
+            }
         }
 
 
@@ -361,7 +366,7 @@ public class PlayerController : MonoBehaviour
 
         if (!modelAudioSource.isPlaying)
         {
-            modelAudioSource.volume = 0.1f;
+            modelAudioSource.volume = DataManager.FOOTSTEP;
             modelAudioSource.Play();
         }
     }

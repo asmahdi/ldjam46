@@ -21,8 +21,9 @@ public class TileMovingAudioScript : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 currentPosition = transform.position;
+        audio.volume = DataManager.TILEMOVING;
 
-        if(currentPosition != previousPosition)
+        if (currentPosition != previousPosition)
         {
             isMoving = true;
         }
@@ -36,8 +37,6 @@ public class TileMovingAudioScript : MonoBehaviour
         {
             if (!audio.isPlaying)
             {
-
-                audio.volume = 0.1f;
                 audio.Play();
             }
             
