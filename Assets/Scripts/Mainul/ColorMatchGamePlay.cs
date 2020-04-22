@@ -53,7 +53,6 @@ public class ColorMatchGamePlay : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
 
         if(other.gameObject == endLevel)
         {
@@ -65,6 +64,7 @@ public class ColorMatchGamePlay : MonoBehaviour
             if (activaMaterial == redMaterial && !isGameWon)
             {
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
+                audio.volume = DataManager.FX;
                 audio.clip = wrongTileClip;
                 audio.Play();
             }
@@ -94,11 +94,13 @@ public class ColorMatchGamePlay : MonoBehaviour
             if (isGameWon)
             {
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
+                audio.volume = DataManager.FX;
                 audio.clip = pickupSound;
                 audio.Play();
             } else
             {
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
+                audio.volume = DataManager.FX;
                 audio.clip = triggerActivateClip;
                 audio.Play();
             }

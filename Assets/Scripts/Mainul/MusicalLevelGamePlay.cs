@@ -79,9 +79,9 @@ public class MusicalLevelGamePlay : MonoBehaviour
                 GuideToResetTile();
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
                 audio.Stop();
+                audio.volume = DataManager.FX;
                 audio.clip = audioClips[coloredTileIndex];
                 audio.Play();
-                Debug.Log(coloredTileIndex);
             }
 
             
@@ -114,6 +114,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
                     if (coloredTileIndex < 17)
                     {
                         audio.Stop();
+                        audio.volume = DataManager.FX;
                         audio.clip = audioClips[coloredTileIndex];
                         audio.Play();
                     }
@@ -136,12 +137,11 @@ public class MusicalLevelGamePlay : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Untagged" && !isColoringActive)
+        if ((other.gameObject.tag == "Untagged" || other.gameObject.tag == "OceanTrigger") && !isColoringActive)
         {
             coloredTileIndex = -1;
-            Debug.Log(coloredTileIndex);
         }
-        if (other.gameObject.tag == "Untagged" && isColoringActive && !isLevelWon)
+        if ((other.gameObject.tag == "Untagged" || other.gameObject.tag == "OceanTrigger") && isColoringActive && !isLevelWon)
         {
             AudioSource audio = gameObject.GetComponent<AudioSource>();
             audio.clip = wrongTileClip;

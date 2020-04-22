@@ -32,11 +32,11 @@ public class SoundManager : MonoBehaviour
         if (DataManager.OCEANSOUND)
         {
             themeMusic.volume = FadeValue(themeMusic.volume, 0f, fadeSpeed);
-            oceanSound.volume = FadeValue(oceanSound.volume, 0.15f, fadeSpeed);
+            oceanSound.volume = FadeValue(oceanSound.volume, DataManager.OCEAN_VOL, fadeSpeed);
         }
         else
         {
-            themeMusic.volume = FadeValue(themeMusic.volume, 1f, fadeSpeed);
+            themeMusic.volume = FadeValue(themeMusic.volume, DataManager.BGM, fadeSpeed);
             oceanSound.volume = FadeValue(oceanSound.volume, 0f, fadeSpeed);
         }
 

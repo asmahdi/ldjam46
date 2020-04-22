@@ -11,6 +11,7 @@ public class DataManager
         
         ;
 
+    public static float BGM, FOOTSTEP, TILEMOVING, FX, OCEAN_VOL, HEART_VOL;
 
 
 

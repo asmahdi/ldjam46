@@ -72,6 +72,7 @@ public class FriendLevelGamePlay : MonoBehaviour
                 {
                     AudioSource audio = gameObject.GetComponent<AudioSource>();
                     audio.clip = activateClip;
+                    audio.volume = DataManager.FX;
                     audio.Play();
                     isActivatedAudioPlayed = true;
                 }
@@ -83,6 +84,14 @@ public class FriendLevelGamePlay : MonoBehaviour
             if (tempTime <= 0)
             {
                 ActivateFriendASecondTrigger();
+                if (!isActivatedAudioPlayed)
+                {
+                    AudioSource audio = gameObject.GetComponent<AudioSource>();
+                    audio.clip = activateClip;
+                    audio.volume = DataManager.FX;
+                    audio.Play();
+                    isActivatedAudioPlayed = true;
+                }
             }
         }
 
