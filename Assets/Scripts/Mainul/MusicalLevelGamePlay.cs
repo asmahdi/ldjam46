@@ -135,11 +135,11 @@ public class MusicalLevelGamePlay : MonoBehaviour
             }
         }
 
-        if (other.gameObject.tag == "Untagged" && !isColoringActive)
+        if ((other.gameObject.tag == "Untagged" || other.gameObject.tag == "OceanTrigger") && !isColoringActive)
         {
             coloredTileIndex = -1;
         }
-        if (other.gameObject.tag == "Untagged" && isColoringActive && !isLevelWon)
+        if ((other.gameObject.tag == "Untagged" || other.gameObject.tag == "OceanTrigger") && isColoringActive && !isLevelWon)
         {
             AudioSource audio = gameObject.GetComponent<AudioSource>();
             audio.clip = wrongTileClip;

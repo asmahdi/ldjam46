@@ -358,8 +358,10 @@ public class PlayerController : MonoBehaviour
     void StartCharacterAnimationWithSound()
     {
         playerModel.GetComponent<Animator>().SetBool("run", true);
+
         if (!modelAudioSource.isPlaying)
         {
+            modelAudioSource.volume = 0.1f;
             modelAudioSource.Play();
         }
     }
