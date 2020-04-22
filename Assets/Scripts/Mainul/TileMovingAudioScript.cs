@@ -46,7 +46,6 @@ public class TileMovingAudioScript : MonoBehaviour
         {
             audio.Stop();
         }
-        Debug.Log(isMoving);
 
         previousPosition = currentPosition;
     }

@@ -81,7 +81,6 @@ public class MusicalLevelGamePlay : MonoBehaviour
                 audio.Stop();
                 audio.clip = audioClips[coloredTileIndex];
                 audio.Play();
-                Debug.Log(coloredTileIndex);
             }
 
             
@@ -139,7 +138,6 @@ public class MusicalLevelGamePlay : MonoBehaviour
         if (other.gameObject.tag == "Untagged" && !isColoringActive)
         {
             coloredTileIndex = -1;
-            Debug.Log(coloredTileIndex);
         }
         if (other.gameObject.tag == "Untagged" && isColoringActive && !isLevelWon)
         {

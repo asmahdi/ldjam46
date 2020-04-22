@@ -83,6 +83,13 @@ public class FriendLevelGamePlay : MonoBehaviour
             if (tempTime <= 0)
             {
                 ActivateFriendASecondTrigger();
+                if (!isActivatedAudioPlayed)
+                {
+                    AudioSource audio = gameObject.GetComponent<AudioSource>();
+                    audio.clip = activateClip;
+                    audio.Play();
+                    isActivatedAudioPlayed = true;
+                }
             }
         }
 

@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public float interactionTime;
 
 
+    [Header("For Player Animation")]
+    public GameObject playerModel;
+
 
 
     CurrentMission currentMission;
@@ -38,6 +41,11 @@ public class PlayerController : MonoBehaviour
     bool victoryCall;
 
     private int maxDepth = 20;
+    private Vector3 previousPosition;
+
+    AudioSource modelAudioSource;
+
+    int frameCount;
 
     private void Start()
     {
@@ -51,16 +59,22 @@ public class PlayerController : MonoBehaviour
         currentMission = CurrentMission.FindTriggerA1;
         tempTimer = interactionTime;
         isPlayerControllActive = true;
+        previousPosition = transform.position;
+        modelAudioSource = playerModel.GetComponent<AudioSource>();
+        frameCount = 1;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        frameCount++;
+
+        //Debug.Log("UPDATE " + frameCount);
+        previousPosition = gameObject.transform.position;
 
 
-        
-        switch(gameLevel)
+        switch (gameLevel)
         {
             case GameLevel.Music:
                 PlayerControllByClicking();
@@ -73,7 +87,20 @@ public class PlayerController : MonoBehaviour
                 PlayerControllByClicking();
                 break;
         }
+
+        if (previousPosition == transform.position && isGridModeActive)
+        {
+            StopCharacterAnimationWithSound();
+        }
     }
+
+    private void LateUpdate()
+    {
+        
+        //Debug.Log("LATE UPDATE " + frameCount);
+    }
+
+
 
 
     void PlayerControllByClicking()
@@ -93,6 +120,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (friendAFirstTriggeredCube && hit.transform == friendAFirstTriggeredCube.transform && friendAFirstTriggeredCube.transform.position == new Vector3(2, 0, 3))
                     {
+                        StartCharacterAnimationWithSound();
                         destination = new Vector3(2, 1, 3);
                         isGridModeActive = false;
                         return;
@@ -112,6 +140,7 @@ public class PlayerController : MonoBehaviour
                         if (hit.transform == friendAFirstTriggeredCube.transform || hit.transform == friendASecondCube.transform || hit.transform == friendAThirdCube.transform)
                         {
                             destination = new Vector3(hit.transform.position.x, 1, hit.transform.position.z);
+                            StartCharacterAnimationWithSound();
                         }
                     }
                 } 
@@ -131,15 +160,23 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+
+
+
     void InvokePathCount()
     {
         pathCount = gridBehaviour.path.Count;
     }
 
 
+
+
+
+
     void MoveToGridDestination()
     {
-        
+
         destination = new Vector3(gridBehaviour.path[pathCount - 1].transform.position.x, gameObject.transform.position.y, gridBehaviour.path[pathCount  - 1].transform.position.z);
         Vector3 targetDirection = destination - transform.position;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, gridRotationSpeed * Time.deltaTime, 0.0f);
@@ -158,18 +195,28 @@ public class PlayerController : MonoBehaviour
         {
             pathCount--;
         }
+
+        if (previousPosition != transform.position)
+        {
+            StartCharacterAnimationWithSound();
+        }
+
     }
+
+
+
+
 
 
     void MoveToNonGridDestination()
     {
+
         Vector3 targetDirection = destination - transform.position;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, gridRotationSpeed * Time.deltaTime, 0.0f);
 
         Debug.DrawRay(transform.position, newDirection, Color.red);
 
         transform.rotation = Quaternion.LookRotation(newDirection);
-
 
         transform.position = Vector3.MoveTowards(transform.position, destination, gridMovementSpeed * Time.deltaTime);
 
@@ -178,21 +225,39 @@ public class PlayerController : MonoBehaviour
 
     void TriggeredCubePlayerController()
     {
+        //move player with green tile;
         if (!isGridModeActive)
         {
-            if (friendAFirstTriggeredCube.transform.position != new Vector3(-3,0,3) && friendAFirstTriggeredCube.transform.position != new Vector3(2, 0, 3))
-             {
-            
+            if (friendAFirstTriggeredCube.transform.position != new Vector3(-3, 0, 3) && friendAFirstTriggeredCube.transform.position != new Vector3(2, 0, 3))
+            {
                 gameObject.transform.position = new Vector3(friendAFirstTriggeredCube.transform.position.x, 1, friendAFirstTriggeredCube.gameObject.transform.position.z);
                 destination = new Vector3(-3, 1, 3);
                 currentMission = CurrentMission.FindTriggerA2;
-            }     
+            }
+            if(transform.position == new Vector3(2, 1, 3) || transform.position == new Vector3(-3, 1, 5) || transform.position == new Vector3(-3, 1, 4) || transform.position == new Vector3(-3, 1, 3))
+            {
+                StopCharacterAnimationWithSound();
+            }
         }
+
+
 
         if (isfriendASecondTriggerActivated)
         {
+            if (!isFriendAReached)
+            {
+                StopCharacterAnimationWithSound();
+            }
+            else
+            {
+                if(transform.position == new Vector3(2,1,1))
+                {
+                    StopCharacterAnimationWithSound();
+                }
+            }
+            
             //move in the second trigger
-            if(gameObject.transform.position.z == 5 && !isFriendAReached)
+            if (gameObject.transform.position.z == 5 && !isFriendAReached)
             {
                 Vector3 tempPos = new Vector3(friendAThirdCube.transform.position.x, 1, friendAThirdCube.transform.position.z);
 
@@ -207,14 +272,15 @@ public class PlayerController : MonoBehaviour
                 destination = tempPos;
             }
 
-            //move to next tile
+            //move to next red tile
             if(gameObject.transform.position.x == 2 && gameObject.transform.position.z < 6 && !isFriendAReached)
             {
                 destination = new Vector3(2, 1, 6);
+                StartCharacterAnimationWithSound();
             }
 
-            //move with next tile
-            if(gameObject.transform.position.x == 2 && gameObject.transform.position.z >= 6 && gameObject.transform.position.z < 8 && !isFriendAReached)
+            //move with next tile with red tile
+            if (gameObject.transform.position.x == 2 && gameObject.transform.position.z >= 6 && gameObject.transform.position.z < 8 && !isFriendAReached)
             {
                 Vector3 tempPos = new Vector3(friendADestinationCube.transform.position.x, 1, friendADestinationCube.transform.position.z);
 
@@ -229,7 +295,8 @@ public class PlayerController : MonoBehaviour
                 destination = tempPos;
             }
 
-            if(gameObject.transform.position.x == 2 && gameObject.transform.position.z == 8 && !isFriendAReached)
+
+            if (gameObject.transform.position.x == 2 && gameObject.transform.position.z == 8 && !isFriendAReached)
             {
                 tempTimer -= Time.deltaTime;
 
@@ -246,7 +313,7 @@ public class PlayerController : MonoBehaviour
                 {
                     isFriendAReached = true;
                     destination = new Vector3(2, 1, 1);
-               
+                    StartCharacterAnimationWithSound();
                 }
 
                 Vector3 targetDirection = friendA.transform.position - transform.position;
@@ -257,6 +324,8 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
 
+
+
             if (gameObject.transform.position.x == 2 && gameObject.transform.position.z == 1 && isFriendAReached)
             {
                 gameObject.GetComponent<Animator>().enabled = true;
@@ -266,8 +335,6 @@ public class PlayerController : MonoBehaviour
                     victoryCall = true;
                     Invoke("FriendLevelVictory", 2.0f);
                 }
-                
-               
             }
 
         }
@@ -285,6 +352,25 @@ public class PlayerController : MonoBehaviour
     void FriendLevelEnd()
     {
         Initiate.Fade("Ending", Color.black, 1f);
+    }
+
+
+    void StartCharacterAnimationWithSound()
+    {
+        playerModel.GetComponent<Animator>().SetBool("run", true);
+        if (!modelAudioSource.isPlaying)
+        {
+            modelAudioSource.Play();
+        }
+    }
+    void StopCharacterAnimationWithSound()
+    {
+        playerModel.GetComponent<Animator>().SetBool("run", false);
+        if (modelAudioSource.isPlaying)
+        {
+            modelAudioSource.Stop();
+        }
+            
     }
 
 
