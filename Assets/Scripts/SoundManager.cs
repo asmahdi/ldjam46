@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
-
+    public AudioSource themeMusic, oceanSound;
     
     void Start()
     {
@@ -25,13 +25,15 @@ public class SoundManager : MonoBehaviour
             Initiate.Fade("Start", Color.black, 1);
         }
 
-        if (SceneManager.GetActiveScene().name == "Music")
+        if (DataManager.OCEANSOUND)
         {
-            GetComponent<AudioSource>().volume = 0.2f;
+            themeMusic.volume = 0f;
+            //oceanSound.volume = 1f;
         }
         else
         {
-            GetComponent<AudioSource>().volume = 1;
+            themeMusic.volume = 1;
+            oceanSound.volume = 0;
         }
     }
 

@@ -17,6 +17,7 @@ TagManager:
   - RedTile
   - Reward
   - BridgeCubeTriggered
+  - OceanTrigger
   layers:
   - Default
   - TransparentFX

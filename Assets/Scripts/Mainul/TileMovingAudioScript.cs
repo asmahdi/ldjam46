@@ -8,6 +8,8 @@ public class TileMovingAudioScript : MonoBehaviour
 
     AudioSource audio;
     Vector3 previousPosition;
+
+    bool isMoving;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,20 +18,33 @@ public class TileMovingAudioScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 currentPosition = transform.position;
 
         if(currentPosition != previousPosition)
         {
-            if (!audio.isPlaying)
-                audio.Play();
+            isMoving = true;
         }
         else
         {
-            if (audio.isPlaying)
-                audio.Stop();
+            isMoving = false;
         }
+
+
+        if (isMoving)
+        {
+            if (!audio.isPlaying)
+            {
+                audio.Play();
+            }
+            
+        }
+        else
+        {
+            audio.Stop();
+        }
+        Debug.Log(isMoving);
 
         previousPosition = currentPosition;
     }

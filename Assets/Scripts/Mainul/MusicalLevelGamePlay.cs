@@ -42,6 +42,17 @@ public class MusicalLevelGamePlay : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        if (other.gameObject.tag == "OceanTrigger")
+        {
+            if (!DataManager.OCEANSOUND)
+            {
+                DataManager.OCEANSOUND = true;
+            }
+            
+        }
+
+
         if(other.gameObject == rewardCube)
         {
             Destroy(rewardCube);
@@ -53,6 +64,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
 
         if (other.gameObject == endLevel)
         {
+            DataManager.OCEANSOUND = false;
             Initiate.Fade("GameB", Color.black, 1);
         }
 
@@ -83,9 +95,9 @@ public class MusicalLevelGamePlay : MonoBehaviour
                 {
                     rend.sharedMaterial = greenMaterial;
                     coloredTileIndex++;
-                    Debug.Log(coloredTileIndex);
+                    //Debug.Log(coloredTileIndex);
                     AudioSource audio = gameObject.GetComponent<AudioSource>();
-                    audio.Stop();
+                    
                     if (coloredTileIndex == 16)
                     {
                         isLevelWon = true;
@@ -96,14 +108,21 @@ public class MusicalLevelGamePlay : MonoBehaviour
                     {
                         audio.loop = false;
                     }
-                    audio.clip = audioClips[coloredTileIndex];
-                    audio.Play();
+
+                    if (coloredTileIndex < 17)
+                    {
+                        audio.Stop();
+                        audio.clip = audioClips[coloredTileIndex];
+                        audio.Play();
+                    }
+                    
                     
                 }
             }
             if (other.gameObject.tag == "RedTile" && !isLevelWon)
             {
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
+               
                 audio.clip = wrongTileClip;
                 audio.Play();
                 Renderer rend = other.gameObject.GetComponent<Renderer>();
