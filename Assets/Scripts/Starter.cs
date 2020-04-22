@@ -12,6 +12,6 @@ public class Starter : MonoBehaviour
 
     public void StartGame()
     {
-        Initiate.Fade("Music", Color.black, 1);
+        Initiate.Fade("Art", Color.black, 1);
     }
 }

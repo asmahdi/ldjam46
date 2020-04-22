@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeMusic: {fileID: 1004021432}
   oceanSound: {fileID: 864532161}
+  fadeSpeed: 0.5
 --- !u!4 &183463017
 Transform:
   m_ObjectHideFlags: 0

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource themeMusic, oceanSound;
+
+    public float fadeSpeed = 0.1f;
+
+    
     
     void Start()
     {
@@ -27,14 +31,28 @@ public class SoundManager : MonoBehaviour
 
         if (DataManager.OCEANSOUND)
         {
-            themeMusic.volume = 0f;
-            //oceanSound.volume = 1f;
+            themeMusic.volume = FadeValue(themeMusic.volume, 0f, fadeSpeed);
+            oceanSound.volume = FadeValue(oceanSound.volume, 0.15f, fadeSpeed);
         }
         else
         {
-            themeMusic.volume = 1;
-            oceanSound.volume = 0;
+            themeMusic.volume = FadeValue(themeMusic.volume, 1f, fadeSpeed);
+            oceanSound.volume = FadeValue(oceanSound.volume, 0f, fadeSpeed);
         }
+
+        Debug.Log(oceanSound.volume);
+    }
+
+
+    private float FadeValue(float value, float result, float speed)
+    {
+        float t = 0;
+        if (t < 1)
+        {
+            t += speed * Time.deltaTime;
+        }
+        return Mathf.Lerp(value, result, t);
+        
     }
 
 

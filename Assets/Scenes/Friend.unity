@@ -497,6 +497,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 267475198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &267475200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 840761b893135ff4ca4de27f6bce013d,
+    type: 3}
+  m_PrefabInstance: {fileID: 267475198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &267475201
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267475200}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75b1e11fe5bc2cb44ad67ad3bd16b690, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &397391724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -682,6 +707,7 @@ GameObject:
   - component: {fileID: 570578165}
   - component: {fileID: 570578168}
   - component: {fileID: 570578167}
+  - component: {fileID: 570578169}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Untagged
@@ -835,6 +861,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &570578169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570578164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadb04ee232814d5285d13e2e2396786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 0
+  invert: 0
+  stairObj:
+  - {fileID: 431870115}
+  - {fileID: 1554655298}
+  - {fileID: 119985834}
+  - {fileID: 1945754399}
+  - {fileID: 1276829508}
+  height: -14
 --- !u!1001 &669141810
 PrefabInstance:
   m_ObjectHideFlags: 0

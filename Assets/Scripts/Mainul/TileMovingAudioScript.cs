@@ -36,6 +36,8 @@ public class TileMovingAudioScript : MonoBehaviour
         {
             if (!audio.isPlaying)
             {
+
+                audio.volume = 0.4f;
                 audio.Play();
             }
             

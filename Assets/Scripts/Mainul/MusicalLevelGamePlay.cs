@@ -21,7 +21,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
     public AudioClip[] audioClips;
     public AudioClip wrongTileClip;
 
-
+    private bool endMusic;
 
 
     bool isColoringActive;
@@ -66,6 +66,8 @@ public class MusicalLevelGamePlay : MonoBehaviour
         {
             DataManager.OCEANSOUND = false;
             Initiate.Fade("GameB", Color.black, 1);
+
+            endMusic = true;
         }
 
         if(other.gameObject == masterTile)
@@ -177,6 +179,15 @@ public class MusicalLevelGamePlay : MonoBehaviour
                 gameObject.transform.position = new Vector3(victoryCube.transform.position.x, 1, victoryCube.transform.position.z);
             }
         }
+
+        if (endMusic)
+        {
+            AudioSource audio = gameObject.GetComponent<AudioSource>();
+
+            audio.volume = FadeValue(audio.volume, 0, 1f);
+        }
+
+        
     }
 
 
@@ -215,6 +226,17 @@ public class MusicalLevelGamePlay : MonoBehaviour
         Renderer rend1 = lastCube.GetComponent<Renderer>();
         rend1.enabled = true;
         rend1.sharedMaterial = greenMaterial;
+    }
+
+    private float FadeValue(float value, float result, float speed)
+    {
+        float t = 0;
+        if (t < 1)
+        {
+            t += speed * Time.deltaTime;
+        }
+        return Mathf.Lerp(value, result, t);
+
     }
 
 }
