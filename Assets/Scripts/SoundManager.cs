@@ -40,7 +40,7 @@ public class SoundManager : MonoBehaviour
             oceanSound.volume = FadeValue(oceanSound.volume, 0f, fadeSpeed);
         }
 
-        Debug.Log(oceanSound.volume);
+        //Debug.Log(oceanSound.volume);
     }
 
 

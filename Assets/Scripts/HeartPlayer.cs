@@ -6,6 +6,7 @@ public class HeartPlayer : MonoBehaviour
 
     public Animator playerAnimator;
     public GameObject mover;
+    public AudioSource footStep;
 
     private bool enableInput = false;
 
@@ -62,11 +63,7 @@ public class HeartPlayer : MonoBehaviour
         }
 
 
-        if (other.tag == "GateEntrance")
-        {
-            transform.SetParent(null);
-            transform.SetParent(other.transform);
-        }
+        
 
         if (other.tag == "MoverB")
         {
@@ -84,6 +81,7 @@ public class HeartPlayer : MonoBehaviour
         if (other.tag == "RunPlayer")
         {
             playerAnimator.SetBool("run", true);
+            footStep.Play();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -91,6 +89,7 @@ public class HeartPlayer : MonoBehaviour
         if (other.tag == "RunPlayer")
         {
             playerAnimator.SetBool("run", false);
+            footStep.Stop();
         }
     }
 }

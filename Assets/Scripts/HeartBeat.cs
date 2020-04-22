@@ -1,15 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeartBeat : MonoBehaviour
 {
-    public Material heart, block_1, block_2, block_3;
-    public float maxEmission;
-    private float emission,speed;
+    
     private void Update()
     {
-
-       // heart.SetFloat("_EmissiveStrengh",)
+        if (DataManager.COMPLETE_BLOCK_B)
+        {
+            GetComponent<Animator>().SetFloat("beat_speed", .67f);
+        }
+        else if (DataManager.COMPLETE_BLOCK_A)
+        {
+            GetComponent<Animator>().SetFloat("beat_speed", .4f);
+        }
+       
+        if (SceneManager.GetActiveScene().name == "Friend")
+        {
+            GetComponent<Animator>().SetFloat("beat_speed", 1f);
+        }
     }
+
+   
 
 
 }
