@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Olik
-  productName: MissingPieces
+  productName: Missing Pieces
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.85098046, g: 0.9176471, b: 0.91372555, a: 1}
