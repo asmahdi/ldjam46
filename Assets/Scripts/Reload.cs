@@ -7,12 +7,12 @@ public class Reload : MonoBehaviour
    
     void Start()
     {
-        Invoke("ReloadGame", 12);
+        Invoke("ReloadGame", 15);
     }
 
     void ReloadGame()
     {
-        Initiate.Fade("Start", Color.black, 2);
+        Initiate.Fade("Start", Color.black, .5f);
         DataManager.RESTART = true;
     }
     
