@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
         if(Input.GetKey(KeyCode.Escape))
         {
             Initiate.Fade("Start", Color.black, 1);
+            Destroy(gameObject);
         }
 
         if (DataManager.OCEANSOUND)
