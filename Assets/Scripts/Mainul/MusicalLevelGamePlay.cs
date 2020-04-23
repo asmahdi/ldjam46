@@ -55,6 +55,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
 
         if(other.gameObject == rewardCube)
         {
+            
             Destroy(rewardCube);
             playerRewardCube.SetActive(true);
             gameObject.GetComponent<PlayerController>().isPlayerControllActive = false;

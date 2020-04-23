@@ -81,7 +81,12 @@ public class HeartPlayer : MonoBehaviour
         if (other.tag == "RunPlayer")
         {
             playerAnimator.SetBool("run", true);
-            footStep.Play();
+            if (!footStep.isPlaying)
+            {
+                footStep.Play();
+            }
+            
+            
         }
     }
     private void OnTriggerExit(Collider other)

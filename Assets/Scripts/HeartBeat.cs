@@ -15,7 +15,7 @@ public class HeartBeat : MonoBehaviour
             GetComponent<Animator>().SetFloat("beat_speed", .4f);
         }
        
-        if (SceneManager.GetActiveScene().name == "Friend")
+        if (SceneManager.GetActiveScene().name == "Ending")
         {
             GetComponent<Animator>().SetFloat("beat_speed", 1f);
         }

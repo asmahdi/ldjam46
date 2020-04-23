@@ -78,7 +78,7 @@ Material:
     - _yPosLow: -0.8
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorHigh: {r: 1, g: 0.5424528, b: 0.67036915, a: 1}
+    - _ColorHigh: {r: 0.9433962, g: 0.4227483, b: 0.56959784, a: 1}
     - _ColorLow: {r: 0.9803922, g: 0.79215693, b: 0.78823537, a: 1}
     - _ColorX: {r: 0, g: 0, b: 0, a: 1}
     - _ColorY: {r: 0, g: 0, b: 0, a: 1}

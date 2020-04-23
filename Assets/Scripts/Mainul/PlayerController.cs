@@ -356,7 +356,7 @@ public class PlayerController : MonoBehaviour
 
     void FriendLevelEnd()
     {
-        Initiate.Fade("Ending", Color.black, 1f);
+        Initiate.Fade("Ending", Color.black, .5f);
     }
 
 

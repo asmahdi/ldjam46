@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -7,6 +6,7 @@ public class TileMovingAudioScript : MonoBehaviour
 {
 
     AudioSource audio;
+    float targetVolume;
     Vector3 previousPosition, currentPosition;
 
     bool isMoving;
@@ -21,6 +21,7 @@ public class TileMovingAudioScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        targetVolume = DataManager.TILEMOVING;
          currentPosition = transform.position;
 
         if(currentPosition != previousPosition)
@@ -42,7 +43,7 @@ public class TileMovingAudioScript : MonoBehaviour
     {
         if (isMoving)
         {
-            audio.volume = FadeValue(audio.volume, 0.4f, 2f);
+            audio.volume = FadeValue(audio.volume, targetVolume, 2f);
             if (!audio.isPlaying)
             {
                 audio.Play();

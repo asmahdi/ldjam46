@@ -23,7 +23,6 @@ public class ColorMatchGamePlay : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip wrongTileClip;
     public AudioClip triggerActivateClip;
-    public AudioClip pickupSound;
 
     Material activaMaterial;
 
@@ -93,10 +92,7 @@ public class ColorMatchGamePlay : MonoBehaviour
         {
             if (isGameWon)
             {
-                AudioSource audio = gameObject.GetComponent<AudioSource>();
-                audio.volume = DataManager.FX;
-                audio.clip = pickupSound;
-                audio.Play();
+                
             } else
             {
                 AudioSource audio = gameObject.GetComponent<AudioSource>();
