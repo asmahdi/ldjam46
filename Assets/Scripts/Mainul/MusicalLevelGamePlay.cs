@@ -175,6 +175,7 @@ public class MusicalLevelGamePlay : MonoBehaviour
         {
             if(other.gameObject == victoryCube)
             {
+                gameObject.GetComponent<PlayerController>().enabled = false;
                 victoryCube.GetComponent<Animator>().enabled = false;
                 victoryCube.transform.position = Vector3.MoveTowards(victoryCube.transform.position, destination, cubeSpeed * Time.deltaTime);
                 gameObject.transform.position = new Vector3(victoryCube.transform.position.x, 1, victoryCube.transform.position.z);

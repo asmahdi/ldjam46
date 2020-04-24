@@ -7629,7 +7629,7 @@ GameObject:
   - component: {fileID: 1083277695}
   - component: {fileID: 1083277699}
   - component: {fileID: 1083277700}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

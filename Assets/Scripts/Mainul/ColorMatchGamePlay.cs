@@ -137,6 +137,8 @@ public class ColorMatchGamePlay : MonoBehaviour
                 other.transform.position = Vector3.MoveTowards(other.transform.position, destintion, cubeSpeed * Time.deltaTime);
                 //Debug.Log(Time.deltaTime);
                 gameObject.transform.position = new Vector3(other.transform.position.x, 1, other.transform.position.z);
+
+                gameObject.GetComponent<PlayerController>().enabled = false;
             }
 
         }

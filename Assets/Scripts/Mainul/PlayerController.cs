@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour
     CurrentMission currentMission;
     bool isPlayerMovingViaAnotherObject;
     bool isGridModeActive;
-    int pathCount;
     Vector3 destination;
     float tempTimer;
     bool victoryCall;
+    private Stack<GameObject> path;
 
     private int maxDepth = 20;
     private Vector3 previousPosition;
@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
         destination = transform.position;
         gridBehaviour.startX = (int) transform.position.x;
         gridBehaviour.startY = (int) transform.position.z;
-        pathCount = 0;
         isGridModeActive = true;
         isPlayerMovingViaAnotherObject = false;
         currentMission = CurrentMission.FindTriggerA1;
@@ -62,6 +61,7 @@ public class PlayerController : MonoBehaviour
         previousPosition = transform.position;
         modelAudioSource = playerModel.GetComponent<AudioSource>();
         frameCount = 1;
+        path = new Stack<GameObject>();
     }
 
 
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
                     if(gridBehaviour.endX > -1 && gridBehaviour.endX < gridBehaviour.rows && gridBehaviour.endY > -1 && gridBehaviour.endY < gridBehaviour.columns)
                     {
                         gridBehaviour.findDistance = true;
-                        Invoke("InvokePathCount", 0.1f);
+                        Invoke("UpdatePath", 0.1f);
                     }
                 }
                 else
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(pathCount > 0 && isGridModeActive)
+        if((path.Count > 0 || destination != transform.position) && isGridModeActive)
         {
             MoveToGridDestination();
         }
@@ -156,6 +156,25 @@ public class PlayerController : MonoBehaviour
             MoveToNonGridDestination();
         }
 
+        //setup start grid of player
+        if(previousPosition.x > destination.x)
+        {
+            gridBehaviour.startX = (int)Mathf.Floor(transform.position.x);
+        }
+        else
+        {
+            gridBehaviour.startX = (int)Mathf.Ceil(transform.position.x);
+        }
+        if(previousPosition.z > destination.z)
+        {
+            gridBehaviour.startY = (int)Mathf.Floor(transform.position.z);
+        }
+        else
+        {
+            gridBehaviour.startY = (int)Mathf.Ceil(transform.position.z);
+        }
+        
+        
     }
 
 
@@ -164,20 +183,21 @@ public class PlayerController : MonoBehaviour
 
 
 
-    void InvokePathCount()
+    void UpdatePath()
     {
-        pathCount = gridBehaviour.path.Count;
+        
+        path = new Stack<GameObject>(gridBehaviour.path);
+
+        if(path.Count > 0)
+        {
+            destination = path.Pop().transform.position + new Vector3(0,1,0);
+        }
     }
-
-
-
 
 
 
     void MoveToGridDestination()
     {
-
-        destination = new Vector3(gridBehaviour.path[pathCount - 1].transform.position.x, gameObject.transform.position.y, gridBehaviour.path[pathCount  - 1].transform.position.z);
         Vector3 targetDirection = destination - transform.position;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, gridRotationSpeed * Time.deltaTime, 0.0f);
 
@@ -188,12 +208,9 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, destination, gridMovementSpeed * Time.deltaTime);
 
-        gridBehaviour.startX = (int)transform.position.x;
-        gridBehaviour.startY = (int)transform.position.z;
-
-        if (transform.position.x == gridBehaviour.path[pathCount - 1].transform.position.x && transform.position.z == gridBehaviour.path[pathCount - 1].transform.position.z)
+        if (transform.position == destination && path.Count > 0)
         {
-            pathCount--;
+            destination = path.Pop().transform.position + new Vector3(0, 1, 0);
         }
 
         if (previousPosition != transform.position)
@@ -202,8 +219,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-
 
 
 
