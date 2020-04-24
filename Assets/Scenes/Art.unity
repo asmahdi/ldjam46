@@ -7680,6 +7680,8 @@ MonoBehaviour:
   cam: {fileID: 1841521776}
   gridBehaviour: {fileID: 1695916680}
   isPlayerControllActive: 0
+  clickMarker: {fileID: 2565870255278724517, guid: 64984e93c89ce9b42a43cb26ca8d1dbb,
+    type: 3}
   friendA: {fileID: 0}
   friendAFirstTriggeredCube: {fileID: 0}
   friendASecondCube: {fileID: 0}
@@ -10009,7 +10011,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

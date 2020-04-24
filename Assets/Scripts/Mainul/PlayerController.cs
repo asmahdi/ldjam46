@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public GridBehaviour gridBehaviour;
     public bool isPlayerControllActive;
+    public GameObject clickMarker;
     
 
     [Header("For Friend Level")]
@@ -115,6 +116,12 @@ public class PlayerController : MonoBehaviour
             {
                 //Debug.Log(hit.transform.position.x);
                 //Debug.Log(hit.transform.position.z);
+
+                if (DataManager.CLICKER < 2)
+                {
+                    Instantiate(clickMarker, hit.transform.position, hit.transform.rotation);
+                }
+                
 
                 if (isGridModeActive)
                 {
